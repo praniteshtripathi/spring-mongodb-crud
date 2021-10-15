@@ -1,1 +1,1 @@
-# spring-mongodb-crud
+Spring Boot crud application using MongoDB
