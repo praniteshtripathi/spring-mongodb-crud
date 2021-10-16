@@ -5,6 +5,7 @@ import com.example.demo.model.Person;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,6 +35,17 @@ public class PersonService {
 
     public void deletePersonUsingId(String id) {
         personDao.deletePersonUsingId(id);
+    }
+
+    public void delete(Person person ){
+        personDao.delete(person);
+    }
+
+    public List<Person> findByFNameAndLastNameAndAge(Person person){
+        return personDao.findByFNameAndLastNameAndAge(person);
+    }
+    public List<Person> findByFNameOrAgeGreaterThan(Person person){
+        return personDao.findByFNameOrAgeGreaterThan(person);
     }
 
 }

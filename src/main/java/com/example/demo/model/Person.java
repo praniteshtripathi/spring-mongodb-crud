@@ -9,28 +9,48 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Person {
     @Id
     private String id;
-    private String name;
-
-    public Person(@JsonProperty("id") String id,
-                  @JsonProperty("name") String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private String fname;
+    private String lname;
+    private int age;
+    private float salary;
 
     public String getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getFname() {
+        return fname;
     }
 
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
 }

@@ -6,3 +6,6 @@ spring:
       uri: mongodb://${MONGO_HOST:localhost}:${MONGO_PORT:27017}/${spring.application.name}
   profiles:
     active: local
+
+##https://www.devglan.com/spring-boot/spring-data-mongodb-queries
+##https://www.devglan.com/spring-boot/spring-data-mongodb-queries

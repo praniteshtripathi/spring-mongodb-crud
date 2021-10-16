@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -29,11 +30,18 @@ public class PersonDao {
         return personRepository.findById(id);
     }
 
+    public void delete(Person person ){
+        personRepository.deleteByCustomParam(person.getId());
+    }
+
     public Person updatePersonUsingId(String id, Person person) {
         Optional<Person> findPersonQuery = personRepository.findById(id);
         Person personValues = findPersonQuery.get();
         personValues.setId(person.getId());
-        personValues.setName(person.getName());
+        personValues.setFname(person.getFname());
+        personValues.setLname(person.getLname());
+        personValues.setAge(person.getAge());
+        personValues.setSalary(person.getSalary());
         return personRepository.save(personValues);
     }
 
@@ -43,6 +51,12 @@ public class PersonDao {
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
+    }
+    public List<Person> findByFNameAndLastNameAndAge(Person person){
+        return personRepository.findByFNameAndLastNameAndAge(person.getFname(),person.getLname(),person.getAge());
+    }
+    public List<Person> findByFNameOrAgeGreaterThan(Person person){
+        return personRepository.findByFNameOrAgeGreaterThan(person.getFname(),person.getLname(),person.getAge());
     }
 
 }

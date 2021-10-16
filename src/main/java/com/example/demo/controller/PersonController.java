@@ -2,14 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Person;
 import com.example.demo.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("person")
+@Slf4j
 public class PersonController {
 
     private final PersonService personService;
@@ -38,7 +40,22 @@ public class PersonController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable("id") String id){
+    public void deleteById(@PathVariable("id") String id){
         personService.deletePersonUsingId(id);
     }
+    @DeleteMapping
+    public void delete(@RequestBody Person person){
+        personService.delete(person);
+        log.info("item deleted successfully");
+    }
+
+    @PostMapping(path = "/findByFNameAndLastNameAndAge")
+    List<Person> findByFNameAndLastNameAndAge( @RequestBody Person person){
+        return personService.findByFNameAndLastNameAndAge(person);
+    }
+    @PostMapping(path = "/findByFNameOrAgeGreaterThan")
+    List<Person> findByFNameOrAgeGreaterThan( @RequestBody Person person){
+        return personService.findByFNameOrAgeGreaterThan(person);
+    }
+
 }
