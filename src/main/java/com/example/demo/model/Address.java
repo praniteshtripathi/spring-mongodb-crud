@@ -1,2 +1,4 @@
-package com.example.demo.model;public class Address {
+package com.example.demo.model;
+
+public class Address {
 }
